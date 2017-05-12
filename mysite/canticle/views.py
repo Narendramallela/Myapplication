@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 
 from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
 from django.shortcuts import render, redirect
 
 # importing models here 
@@ -12,6 +12,7 @@ from django.shortcuts import render, redirect
 from .models import User, Song, Website_Information
 from django.template import loader
 from .forms import SignUpForm
+from .forms import AuthenticationForm
 
 def index(request):
     template = loader.get_template('signup.html')    
@@ -31,3 +32,16 @@ def signup(request):
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
 
+def login(request):
+    if request.method == 'POST':
+        form = AuthenticationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            raw_password = form.cleaned_data.get('password')
+            user = authenticate(username=username, password=raw_password)
+            login(request, user)
+            return redirect('home')
+    else:
+        form = AuthenticationForm()
+    return render(request, 'login.html', {'form': form})
