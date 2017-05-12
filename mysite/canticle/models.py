@@ -11,7 +11,7 @@ class User(models.Model):
     Last_Name = models.CharField(max_length = 100)
     Date_of_Birth = models.DateTimeField()
     Email_ID = models.CharField(max_length =100)
-    Phone_Number = models.IntegerField(max_length=12)
+    Phone_Number = PhoneNumberField(max_length=11)
 
     def __str__(self):
         return self.User_ID

@@ -11,7 +11,7 @@ from django.shortcuts import render, redirect
 
 from .models import User, Song, Website_Information
 from django.template import loader
-
+from .forms import SignUpForm
 
 def index(request):
     template = loader.get_template('signup.html')    
@@ -19,7 +19,7 @@ def index(request):
 
 def signup(request):
     if request.method == 'POST':
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get('username')
@@ -28,5 +28,6 @@ def signup(request):
             login(request, user)
             return redirect('home')
     else:
-        form = UserCreationForm()
+        form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
+
