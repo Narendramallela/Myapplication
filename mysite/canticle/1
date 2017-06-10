@@ -53,12 +53,8 @@ def login(request):
 
 def info(request):
     recently_added_song_list = Song.objects.order_by('-Name')[:5]
-    template = loader.get_template('info.html')
-    context = {
-        'recently_added_song_list': recently_added_song_list,
-    }
-    return HttpResponse(template.render(context, request))
-
-def logout(request):
-    output="You are successfully logged out of Canticle"
-    return HttpResponse(output)
+    output = ', '.join(['Link for the song '+ q.Name+ ' by ' +q.Artists +' is '+ q.Link for q in recently_added_song_list])
+    c = RequestContext(request,'info.html')
+    t = Template("{{output}}") # A dummy template
+    response = HttpResponse(t.render(c))
+    return response
