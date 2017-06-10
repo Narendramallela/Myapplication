@@ -25,14 +25,16 @@ def signup(request):
             form.save()
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
+            First_Name=form.cleaned_data.get('first_name')
+            Last_Name=form.cleaned_data.get('last_name')
+            Email=form.cleaned_data.get('email')
+            Phone_number= form.cleaned_data.get('Phone_Number')
             user = authenticate(username=username, password=raw_password)
-        
+            user_obj = User(User_ID=username,Password=raw_password,First_Name=First_Name,Last_Name=Last_Name,Email_ID=Email, Phone_Number=Phone_number)
+            user_obj.save()
             login(request, user)
-        user_obj = User(username=username, email=email, password=password)
-        # saving all the data in the current object into the database
-        user_obj.save()
-          # saving all the data in the current object into the database
-        return redirect('home')
+            form.save()
+        return redirect('login')
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
@@ -46,7 +48,7 @@ def login(request):
             raw_password = form.cleaned_data.get('password')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('home')
+        return redirect('info')
     else:
         form = AuthenticationForm()
     return render(request, 'login.html', {'form': form})

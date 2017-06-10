@@ -18,7 +18,6 @@ class SignUpForm(UserCreationForm):
         model = User
         fields = ('username', 'first_name', 'last_name', 'email','Phone_Number', 'password1' , 'password2')
 
-
 class LoginForm(AuthenticationForm):
 
      """
@@ -28,3 +27,5 @@ class LoginForm(AuthenticationForm):
      class Meta:
          model=User
          fields = ('username','password') 
+
+
