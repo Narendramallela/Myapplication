@@ -3,18 +3,7 @@ from phonenumber_field.modelfields import PhoneNumberField
 from django.db import models
 from django.utils.encoding import python_2_unicode_compatible
 # Create your models here.
-
-class User(models.Model):
-    User_ID = models.CharField(max_length = 100)
-    Password = models.CharField(max_length = 100)
-    First_Name = models.CharField(max_length = 100)
-    Last_Name = models.CharField(max_length = 100)
-    Date_of_Birth = models.DateTimeField()
-    Email_ID = models.CharField(max_length =100)
-    Phone_Number = PhoneNumberField(max_length=11)
-
-    def __str__(self):
-        return self.User_ID
+from django.contrib.auth.models import User
 
 class Song(models.Model):
     Name = models.CharField(max_length= 100)
@@ -26,11 +15,12 @@ class Song(models.Model):
 
     def __str__(self):
         return self.Name
-        
+       
+
 class Website_Information(models.Model):
-    Name = models.CharField(max_length = 100)
+    Name = models.CharField(max_length=100)
     Link = models.ForeignKey(Song, on_delete = models.CASCADE)
     Allowed_Flag = models.CharField(max_length = 100)
 
     def __str__(self):
-        return self.Name
+        return self.name
