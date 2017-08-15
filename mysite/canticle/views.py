@@ -22,18 +22,18 @@ def signup(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)
         #user_obj=get_object_or_404(User)
-        #try:
-         #   user_exists = User.objects.get(username=request.POST['username'])
-          #  return HttpResponse("Username already taken")
-        #except User.DoesNotExist:        
-        if form.is_valid():
-            form.save()
-            user=User.objects.create_user(username=form.cleaned_data['username'], email=form.cleaned_data['email'], password1 = form.cleaned_data['password1'], password2=form.cleaned_data['password2'])
-            user.first_name = form.cleaned_data['first_name']
-            user.last_name = form.cleaned_data['last_name']
-            user.save()
-            user = authenticate(username=username, password=raw_password)
-        return redirect('login')
+        try:
+            user_exists = User.objects.get(username=request.POST['username'])
+            return HttpResponse("Username already taken")
+        except User.DoesNotExist:        
+            if form.is_valid():
+                form.save()
+                user=User.objects.create_user(username=form.cleaned_data['username'], email=form.cleaned_data['email'], password1 = form.cleaned_data['password1'], password2=form.cleaned_data['password2'])
+                user.first_name = form.cleaned_data['first_name']
+                user.last_name = form.cleaned_data['last_name']
+                user.save()
+                user = authenticate(username=username, password=raw_password)
+            return redirect('login')
     else:
         form = SignUpForm()
     return render(request, 'signup.html', {'form': form})
@@ -42,10 +42,7 @@ def login(request):
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            raw_password = form.cleaned_data.get('password')
-            user = authenticate(username=username, password=raw_password)
+            user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
             login(request, user)
         return redirect('info')
     else:
