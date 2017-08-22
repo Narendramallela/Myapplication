@@ -43,8 +43,8 @@ def login(request):
         form = LoginForm(request.POST)
         if form.is_valid():
             user = authenticate(username=form.cleaned_data['username'], password=form.cleaned_data['password'])
-            login(request, user)
-        return redirect('info')
+           # login(request)
+            return redirect('info')
     else:
         form = LoginForm()
     return render(request, 'login.html', {'form': form})
