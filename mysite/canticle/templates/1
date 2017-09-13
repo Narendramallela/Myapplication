@@ -2,7 +2,7 @@
 {% load static %}
     <ul>
     <head>
-       <link rel="styleheet" type="text/css" ref= "/canticle/static/style.css?version=2">
+       <link rel="styleheet" type="text/css" ref= "/canticle/static/style.css">
     </head>
     <h2> Here is the List of your Favorite Songs
     </h2>
@@ -16,10 +16,8 @@
        <link rel="stylesheet" type="text/css" href="{% static 'canticle/style.css' %}">
     </head>
     <body>
-    </body>
-    <p>Please add your favorite songs to listen and share!!</p>
-    <button class="addbutton" type="button" onclick="alert('Add Songs')"> +</button>
-<script>
+	    <div>
+		    <script>
   (function() {
     var cx = '005828409068220044640:aza23wb-b2e';
     var gcse = document.createElement('script');
@@ -30,9 +28,15 @@
     s.parentNode.insertBefore(gcse, s);
   })();
 </script>
-<gcse:search linkTarget=_top></gcse:search>
-<button class="AddSongButton" type="button" onclick="alert('Click on this button to add this link to your favrorites')">+</button>
-<form method="get" action="{% url 'logout' %}" onsubmit="return confirm('Are you sure you want to logout of Canticle?');">
+<gcse:search></gcse:search>
+   </div>
+    </body>
+    <p>Please add your favorite songs to listen and share!!</p>
+    <button class="addbutton" type="button" onclick="alert('Add Songs')"> +</button>
+    <form action="https://google.com/search" method="get">
+	    <input class="searchbox" type="search" id="search" placeholder="Search google to add your favorite song here" />
+    </form>
+    <form method="get" action="{% url 'logout' %}" onsubmit="return confirm('Are you sure you want to logout of Canticle?');">
     <button class="logout" type="submit">Logout</button>
     </form>
 {% endif %}

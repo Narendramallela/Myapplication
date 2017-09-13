@@ -60,3 +60,7 @@ def info(request):
 def logout(request):
     output="You are successfully logged out of Canticle"
     return HttpResponse(output)
+
+
+def addanentry(request):
+    return redirect('addanentry')

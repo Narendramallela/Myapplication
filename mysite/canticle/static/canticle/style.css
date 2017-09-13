@@ -1,0 +1,86 @@
+
+.gsc-adBlock { /* this hides both the top and right ad blocks*/
+    display:none !important;
+}
+.gsc-result-info{
+    display:none;
+    
+}
+
+.gs-snippet {
+        display: none;
+    }
+
+.gs-webResult {
+        border: 1px solid #eee;
+        padding: 1em;
+    }
+
+.gsc-branding, .gcsc-branding {
+    display: none;
+}
+.addbutton {
+border:2px solid #779ba5;
+width:40px;
+border-radius: 50%;
+background-color:#779ba5;
+line-height:30px;
+color:white;
+line-height:35px;
+font-size:26px;
+transition-duration: 0.4s;
+}
+
+.addbutton:hover
+
+{
+
+background-color: #295f68;
+color:white;
+cursor:pointer;
+}
+
+.logout
+
+{
+
+border: 2px solid #244a60;
+width: 1.2in;
+border-radius:8px;
+background-color:#92c2dd;
+line-height:30px;
+position:absolute;
+left:80%;
+top:10%;
+}
+
+.searchbox
+
+{
+padding:0px;
+border-radius:2px;
+line-height:44px;
+font-size:22px;
+width:50%;
+
+}
+
+
+.searchbox::placeholder
+
+{
+
+color:#eae5e5;
+}
+
+
+/* Use a different font family for search results */
+.gs-title, .gs-snippet {
+   font-family: courier;
+    }
+
+    /* Add a border between individual search results */
+.gs-webResult {
+   border: 1px solid #eee;
+   padding: 1em;
+   }
