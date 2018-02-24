@@ -16,7 +16,7 @@ class SignUpForm(UserCreationForm):
     Phone_Number=forms.CharField(max_length=30, required=False, help_text='Optional')
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email','birth_date','Phone_Number','password1','password2',)
+        fields = ('username', 'first_name', 'last_name', 'email','birth_date','Phone_Number')
 
 
 class LoginForm(forms.Form):

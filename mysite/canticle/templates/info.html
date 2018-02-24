@@ -19,20 +19,35 @@
     </body>
     <p>Please add your favorite songs to listen and share!!</p>
     <button class="addbutton" type="button" onclick="alert('Add Songs')"> +</button>
+    <form method="get" action="{%url 'logout' %}" onsubmit="return confirm('Are you sure you want to logout of Canticle?');">
+    <button class="logout" type="submit">Logout</button>
 <script>
   (function() {
     var cx = '005828409068220044640:aza23wb-b2e';
     var gcse = document.createElement('script');
+    
     gcse.type = 'text/javascript';
     gcse.async = true;
     gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
     var s = document.getElementsByTagName('script')[0];
     s.parentNode.insertBefore(gcse, s);
+    var s1 =document.getElementsByTagName('script');
+    console.log("this is is",s);
+    console.log("this is s1",s1);
+    console.log(gcse);
+    
+    
   })();
 </script>
-<gcse:search linkTarget=_top></gcse:search>
-<button class="AddSongButton" type="button" onclick="alert('Click on this button to add this link to your favrorites')">+</button>
-<form method="get" action="{% url 'logout' %}" onsubmit="return confirm('Are you sure you want to logout of Canticle?');">
-    <button class="logout" type="submit">Logout</button>
+<script src="https://www.googleapis.com/customsearch/v1?key=<span class="apiparam"></span>&amp;cx=017576662512468239146:omuauf_lfve&amp;q=cars&amp;callback=hndlr">
+    </script>
+    <gcse:search linkTarget=_top></gcse:search>
+    
+    <PageMap>
+  <DataObject type="metatags">
+   <Attribute name="pubdate" value="20100101"/>
+  </DataObject>
+ </PageMap>
+
     </form>
 {% endif %}
